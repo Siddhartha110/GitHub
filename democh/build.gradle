@@ -7,6 +7,7 @@ plugins {
 group = 'com.japanch'
 version = '0.0.1-SNAPSHOT'
 
+
 java {
     sourceCompatibility = '21'
 }
@@ -21,6 +22,7 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -28,8 +30,19 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     
-    // Include all JAR files from the libs directory
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation files('libs/mybatis-spring-boot-starter-3.0.3.jar')
+    implementation files('libs/mybatis-spring-boot-starter-test-3.0.3.jar')
+    implementation files('libs/junit-platform-launcher-1.11.0-M2-javadoc.jar')
+    implementation files('libs/mysql-connector-j-8.4.0.jar')
+    implementation files('libs/spring-boot-devtools-3.2.5-javadoc.jar')
+
+    // implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+    // testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
+    // testImplementation 'org.junit.platform:junit-platform-launcher:1.11.0-M2'
+    // implementation 'mysql:mysql-connector-java:8.4.0'
+    // developmentOnly 'org.springframework.boot:spring-boot-devtools:3.2.5'
+
+
 }
 
 tasks.named('test') {
