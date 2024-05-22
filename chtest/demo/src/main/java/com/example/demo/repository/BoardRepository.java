@@ -14,7 +14,7 @@ public class BoardRepository {
     private final SqlSessionTemplate sql;
 
     public void save(BoardDTO boardDTO){
-        sql.insert("BoardMapper.save", boardDTO);
+        sql.insert("com.example.demo.mapper.BoardMapper.save", boardDTO);
     }
 
 

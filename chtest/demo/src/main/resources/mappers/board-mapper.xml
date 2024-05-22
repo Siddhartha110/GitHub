@@ -2,7 +2,8 @@
 <mapper namespace="com.example.demo.mapper.BoardMapper">
 
     <insert id="save" parameterType="BoardDTO">
-        insert into board (boardWriter, boardPass, boardTitle, boardContents) values(#{boardWriter},#{boardPass},#{boardTitle},#{boardContents})
+        insert into board (boardWriter, boardPass, boardTitle, boardContents)
+        values(#{boardWriter},#{boardPass},#{boardTitle},#{boardContents})
     </insert>
 
 </mapper>
