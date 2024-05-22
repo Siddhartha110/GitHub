@@ -6,4 +6,8 @@
         values(#{boardWriter},#{boardPass},#{boardTitle},#{boardContents})
     </insert>
 
+    <select id="findAll" resultType="BoardDTO">
+        select * from board order by id desc
+    </select>
+
 </mapper>
