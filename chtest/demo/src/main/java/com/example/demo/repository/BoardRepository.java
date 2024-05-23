@@ -34,6 +34,14 @@ public class BoardRepository {
         return result;
     }
 
+    public void update(BoardDTO boardDTO) {
+        sql.update("BoardMapper.update", boardDTO);
+    }
+
+    public void delete(Long id) {
+        sql.delete("BoardMapper.delete", id);
+    }
+
 
 
 

@@ -11,6 +11,7 @@ public class BoardDTO {
     private String boardTitle;
     private String boardContents;
     private int boardHits;
+    private int fileAttached;
     private String createdAt;
 
 }
