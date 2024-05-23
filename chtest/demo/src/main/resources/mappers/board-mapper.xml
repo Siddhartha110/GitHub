@@ -1,5 +1,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.mapper.BoardMapper">
+<mapper namespace="BoardMapper">
 
     <insert id="save" parameterType="BoardDTO">
         insert into board (boardWriter, boardPass, boardTitle, boardContents)
@@ -9,6 +9,16 @@
     <select id="findAll" resultType="BoardDTO">
         select id, boardTitle, boardWriter, boardHits, date_format(createdAt, "%Y-%m-%d") as createdAt
         from board order by id desc
+    </select>
+
+    <update id="updateHits" parameterType="Long">
+        update board set boardHits=boardhits + 1 where id=#{id}
+    </update>
+
+    <select id="findById" parameterType="Long" resultType="BoardDTO">
+        select id, boardTitle, boardWriter, boardPass, boardContents, boardHits,
+        date_format(createdAt, "%Y-%m-%d %H:%i:%s") as createdAt
+        from board where id=#{id}
     </select>
 
 </mapper>

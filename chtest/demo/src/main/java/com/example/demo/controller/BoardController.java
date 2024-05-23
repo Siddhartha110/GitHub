@@ -9,6 +9,7 @@ import com.example.demo.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,6 +44,18 @@ public class BoardController {
         model.addAttribute("boardList", boardDTOList);
         return "list";
     }
+
+    @GetMapping("/{id}")
+    public String findById(@PathVariable("id") Long id, Model model) {
+        // 조회수 처리
+        boardService.updateHits(id);
+        // 상세내용 가져오기
+        BoardDTO result = boardService.findById(id);
+        System.out.println(result.toString());
+        model.addAttribute("board", result);
+        return "detail";
+    }
+    
     
 
 }

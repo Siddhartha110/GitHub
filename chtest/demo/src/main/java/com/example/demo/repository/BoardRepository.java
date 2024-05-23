@@ -16,12 +16,22 @@ public class BoardRepository {
     private final SqlSessionTemplate sql;
 
     public void save(BoardDTO boardDTO){
-        sql.insert("com.example.demo.mapper.BoardMapper.save", boardDTO);
+        sql.insert("BoardMapper.save", boardDTO);
     }
 
     public List<BoardDTO> findAll() {
 
-        return sql.selectList("com.example.demo.mapper.BoardMapper.findAll");
+        return sql.selectList("BoardMapper.findAll");
+    }
+
+    public void updateHits(Long id) {
+
+        sql.update("BoardMapper.updateHits", id);
+    }
+
+    public BoardDTO findById(Long id) {
+        BoardDTO result = sql.selectOne("BoardMapper.findById", id);
+        return result;
     }
 
 
