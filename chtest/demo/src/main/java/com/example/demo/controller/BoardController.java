@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import com.example.demo.dto.BoardDTO;
+import com.example.demo.dto.BoardFileDTO;
 import com.example.demo.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -53,6 +54,10 @@ public class BoardController {
         BoardDTO result = boardService.findById(id);
         System.out.println(result.toString());
         model.addAttribute("board", result);
+        if (result.getFileAttached() == 1) {
+            List<BoardFileDTO> boardFileDTOList = boardService.findFile(id);
+            model.addAttribute("boardFileList", boardFileDTOList);
+        }
         return "detail";
     }
     

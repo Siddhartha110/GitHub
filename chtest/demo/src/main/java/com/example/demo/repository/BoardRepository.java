@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.dto.BoardDTO;
+import com.example.demo.dto.BoardFileDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,8 +16,17 @@ public class BoardRepository {
 
     private final SqlSessionTemplate sql;
 
-    public void save(BoardDTO boardDTO){
+    public BoardDTO save(BoardDTO boardDTO){
         sql.insert("BoardMapper.save", boardDTO);
+        //입력한 값이 반환됨.
+        System.out.println("-----------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------");
+
+        System.out.println("repository " + boardDTO.getId());
+        System.out.println("-----------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------");
+        
+        return boardDTO;
     }
 
     public List<BoardDTO> findAll() {
@@ -40,6 +50,14 @@ public class BoardRepository {
 
     public void delete(Long id) {
         sql.delete("BoardMapper.delete", id);
+    }
+
+    public void saveFile(BoardFileDTO boardFileDTO) {
+        sql.insert("BoardMapper.saveFile", boardFileDTO);
+    }
+
+    public List<BoardFileDTO> findFile(Long id) {
+        return sql.selectList("BoardMapper.findFile", id);
     }
 
 
